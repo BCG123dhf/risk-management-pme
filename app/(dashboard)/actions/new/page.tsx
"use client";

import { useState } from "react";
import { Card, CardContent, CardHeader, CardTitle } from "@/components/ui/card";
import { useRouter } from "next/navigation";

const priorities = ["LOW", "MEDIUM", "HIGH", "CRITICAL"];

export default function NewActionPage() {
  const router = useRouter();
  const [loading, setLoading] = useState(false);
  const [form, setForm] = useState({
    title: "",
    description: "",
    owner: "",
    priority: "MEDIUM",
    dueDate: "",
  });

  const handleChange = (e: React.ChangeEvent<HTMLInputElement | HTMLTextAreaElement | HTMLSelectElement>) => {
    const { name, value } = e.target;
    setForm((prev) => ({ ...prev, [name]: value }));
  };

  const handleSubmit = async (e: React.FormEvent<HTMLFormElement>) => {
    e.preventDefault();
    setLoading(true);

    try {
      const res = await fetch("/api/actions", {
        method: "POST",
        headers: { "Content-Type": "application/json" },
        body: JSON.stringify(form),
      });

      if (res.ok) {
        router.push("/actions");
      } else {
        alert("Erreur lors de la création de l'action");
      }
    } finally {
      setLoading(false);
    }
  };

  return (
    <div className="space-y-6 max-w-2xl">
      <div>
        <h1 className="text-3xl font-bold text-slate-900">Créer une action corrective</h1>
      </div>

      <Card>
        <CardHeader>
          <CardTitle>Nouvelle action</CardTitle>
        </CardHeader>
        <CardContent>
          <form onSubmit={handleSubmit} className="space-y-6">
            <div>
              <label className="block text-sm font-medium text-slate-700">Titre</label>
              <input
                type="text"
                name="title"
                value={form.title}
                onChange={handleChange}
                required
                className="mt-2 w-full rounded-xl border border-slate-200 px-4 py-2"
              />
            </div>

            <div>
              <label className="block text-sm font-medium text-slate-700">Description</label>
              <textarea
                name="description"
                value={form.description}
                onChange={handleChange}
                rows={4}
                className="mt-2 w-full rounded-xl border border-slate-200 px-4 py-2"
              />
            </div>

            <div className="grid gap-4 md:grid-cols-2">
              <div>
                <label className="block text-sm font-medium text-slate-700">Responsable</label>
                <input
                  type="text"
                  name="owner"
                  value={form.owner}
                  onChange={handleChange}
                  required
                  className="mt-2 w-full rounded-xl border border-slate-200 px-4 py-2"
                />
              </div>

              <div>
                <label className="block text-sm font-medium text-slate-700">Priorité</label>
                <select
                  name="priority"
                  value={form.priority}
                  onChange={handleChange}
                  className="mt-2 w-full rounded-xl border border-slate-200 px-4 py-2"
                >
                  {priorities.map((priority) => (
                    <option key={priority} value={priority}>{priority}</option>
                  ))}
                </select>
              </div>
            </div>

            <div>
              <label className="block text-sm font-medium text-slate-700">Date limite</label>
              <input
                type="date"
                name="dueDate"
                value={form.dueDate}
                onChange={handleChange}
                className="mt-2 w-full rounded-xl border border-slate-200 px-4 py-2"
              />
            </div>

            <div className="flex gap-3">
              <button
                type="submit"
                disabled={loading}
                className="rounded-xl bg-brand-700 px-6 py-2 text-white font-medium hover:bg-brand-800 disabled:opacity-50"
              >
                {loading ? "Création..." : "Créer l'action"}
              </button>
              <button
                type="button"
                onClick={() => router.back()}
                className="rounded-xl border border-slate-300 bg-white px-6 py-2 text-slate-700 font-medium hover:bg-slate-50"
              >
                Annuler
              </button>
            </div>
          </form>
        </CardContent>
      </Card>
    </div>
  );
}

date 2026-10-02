@@ -1,0 +1,52 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+const actions = [
+  {
+    id: "1",
+    title: "Renforcer les accès admin",
+    priority: "HIGH",
+    owner: "IT",
+    status: "IN_PROGRESS",
+    dueDate: "2026-10-18",
+  },
+  {
+    id: "2",
+    title: "Mettre à jour les procédures de paiement",
+    priority: "MEDIUM",
+    owner: "Comptabilité",
+    status: "OPEN",
+    dueDate: "2026-10-25",
+  },
+];
+
+export default function ActionsPage() {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-700">Suivi</p>
+          <h1 className="mt-2 text-3xl font-bold text-slate-900">Actions correctives</h1>
+        </div>
+        <a href="/actions/new" className="rounded-xl bg-brand-700 px-4 py-2 text-white font-medium hover:bg-brand-800">
+          Nouvelle action
+        </a>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        {actions.map((action) => (
+          <Card key={action.id}>
+            <CardHeader>
+              <CardTitle>{action.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 text-sm text-slate-600">
+              <p>Priorité : {action.priority}</p>
+              <p>Responsable : {action.owner}</p>
+              <p>Statut : {action.status}</p>
+              <p>Date limite : {action.dueDate}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
